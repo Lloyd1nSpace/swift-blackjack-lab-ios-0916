@@ -16,7 +16,14 @@ class Deck {
     
     init() {
 //        Write an initializer that generates the 52 unique cards required for modeling a standard 52-card deck. It should hold them in the array of cards that can be dealt.
-        
+        repeat {
+            let card = Card(suit: "", rank: "")
+            for suit in card.validSuits() {
+                for rank in card.validRanks() {
+                    remainingCards.append(Card(suit: suit, rank: rank))
+                }
+            }
+        } while remainingCards.count <= 52
     }
     
     func drawCard() {
@@ -29,7 +36,6 @@ class Deck {
         
 //        Write a shuffle() method that gathers up the dealt cards and randomizes all 52 cards. These randomized cards should be returned to your array of undealt cards.
 //        Hint: The arc4random_uniform() C function is accessible in Swift.
-        
         repeat {
             if let card = cardsDealt.popLast() {
                 
